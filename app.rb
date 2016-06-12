@@ -29,3 +29,19 @@ get '/cpu_usage.json' do
 
   json({cpu_usage: cpuusage, cpu_usage_percentage: cpuusagepercentage})
 end
+
+get '/mem_usage.json' do
+  if File.exists?("/proc/meminfo")
+    File.open("/proc/meminfo", "r") do |file|
+      @result = file.read
+    end
+  end
+
+  memstat = @result.split("\n").collect{|x| x.strip}
+  memtotal = memstat[0].gsub(/[^0-9]/, "")
+  memactive = memstat[5].gsub(/[^0-9]/, "")
+  memactivecalc = (memactive.to_f * 100) / memtotal.to_f
+  memusagepercentage = memactivecalc.round
+
+  json({mem_total: memtotal, mem_active: memactive, mem_usage_percentage: memusagepercentage})
+end
