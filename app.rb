@@ -45,3 +45,13 @@ get '/mem_usage.json' do
 
   json({mem_total: memtotal, mem_active: memactive, mem_usage_percentage: memusagepercentage})
 end
+
+get '/process_running.json' do
+  ps = `ps aux | awk '{print $11, $4}' | sort -k2nr  | head -n 10`
+  array = []
+  ps.each_line do |line|
+    line = line.chomp.split(" ")
+    array << [line.first.gsub(/[\[\]]/, ""), line.last]
+  end
+  json({process: array})
+end
