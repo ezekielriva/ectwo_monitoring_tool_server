@@ -6,4 +6,5 @@ gem 'sinatra-contrib'
 group :development do
   gem 'dotenv'
   gem "capistrano", "~> 3.4"
+  gem 'pry'
 end

@@ -1,0 +1,10 @@
+/opt/google/chrome/chrome
+/opt/google/chrome/chrome
+/opt/google/chrome/chrome
+/opt/google/chrome/chrome
+/opt/google/chrome/chrome
+/opt/sublime_text/sublime_text
+/opt/google/chrome/chrome
+/usr/share/spotify/spotify
+/opt/google/chrome/chrome
+/opt/google/chrome/chrome
